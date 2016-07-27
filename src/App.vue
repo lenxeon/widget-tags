@@ -117,7 +117,7 @@ export default {
      * 失去焦点
      */
     blurHander (e) {
-      // this.focus = false
+      this.focus = false
       e.preventDefault()
     },
 
