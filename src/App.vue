@@ -312,6 +312,9 @@ export default {
 </script>
 
 <style lang="less">
+
+@border-color:   #eee;
+
 .tag-box {
   // position: absolute;
   width: 100%;
@@ -337,7 +340,7 @@ export default {
 				-moz-border-radius: 3px;
 				-webkit-border-radius: 3px;
 				border-radius: 3px;
-				border: 1px solid #ddd;
+				border: 1px solid @border-color;
 				cursor: default;
 				list-style-type: none;
 				float: left;
@@ -404,9 +407,9 @@ export default {
 				background: #F9F9F9;
 				filter: alpha(opacity=98);
 				opacity: .98;
-				webkit-box-shadow: 0 3px 3px #ccc;
-				moz-box-shadow: 0 3px 3px #ccc;
-				box-shadow: 0 3px 3px #ccc;
+				webkit-box-shadow: 0 3px 3px @border-color;
+				moz-box-shadow: 0 3px 3px @border-color;
+				box-shadow: 0 3px 3px @border-color;
 				padding: 5px 7px;
 			}
 		}
@@ -416,9 +419,9 @@ export default {
       background: #F9F9F9;
       filter: alpha(opacity=98);
       opacity: .98;
-      webkit-box-shadow: 0 3px 3px #ccc;
-      moz-box-shadow: 0 3px 3px #ccc;
-      box-shadow: 0 3px 3px #ccc;
+      webkit-box-shadow: 0 3px 3px @border-color;
+      moz-box-shadow: 0 3px 3px @border-color;
+      box-shadow: 0 3px 3px @border-color;
 
 			.autocomplete-result-tip {
 				padding: 5px 7px;
@@ -456,7 +459,7 @@ export default {
 		}
 	}
 	.focus {
-		border: 1px solid #ddd;
+		border: 1px solid @border-color;
 
 		.tag-input {
 			display: inline-block !important;
@@ -465,7 +468,7 @@ export default {
 			display: none !important;
 		}
     .tag-autocomplete{
-      border: 1px solid #ddd;
+      border: 1px solid @border-color;
       border-top: none;
     }
 		.tag-autocomplete-placeholder{
