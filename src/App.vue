@@ -400,6 +400,7 @@ export default {
 			position: absolute;
 			z-index: 288;
 			margin-left: -1px;
+      font-size: 12px;
 
 			.tag-autocomplete-placeholder {
 				border-top: none;
@@ -415,6 +416,7 @@ export default {
 		}
 		.tag-autocomplete-results {
       border-top: none;
+      font-size: 12px;
 			display: none;
       background: #F9F9F9;
       filter: alpha(opacity=98);
