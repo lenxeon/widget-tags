@@ -30,7 +30,7 @@
         </div>
         <div v-else>
           <ul v-if='searchResult.length>0' class='tag-autocomplete-results'>
-            <li v-for='tag in searchResult'
+            <li v-for='(index, tag) in searchResult'
             :tag="tag"
             :class="{ 'result-item': true, 'active':$index===selectIndex }"
             tag-id="{{tag.uuid}}">{{tag.name}}</li>
@@ -67,7 +67,7 @@ export default {
       loading: false,
       locked: false,
       newTag: '',
-      selectIndex: -1,
+      selectIndex: 0,
       tags: [],
       searchResult: []
     }
@@ -78,14 +78,15 @@ export default {
         'tag-box-wrap': true,
         'focus': this.focus
       }
-    },
-    resultItemClass (tag) {
-      console.log(tag)
-      return {
-        'result-item': true,
-        'active': this.selectIndex
-      }
     }
+    // ,
+    // resultItemClass (tag) {
+    //   console.log(tag)
+    //   return {
+    //     'result-item': true,
+    //     'active': this.selectIndex
+    //   }
+    // }
   },
   filter: {
     urlBuilder: function (tagId) {
@@ -94,19 +95,31 @@ export default {
   },
 
   methods: {
+
+    /**
+     * 点击开始添加
+     */
     addTagHander (e) {
       e.preventDefault()
       var me = this
       me.focus = true
+      console.log(this.selectIndex)
       me.$nextTick(function () {
         me.$els.tagInput.focus()
       })
     },
 
+    /**
+     * 失去焦点
+     */
     blurHander (e) {
+      this.focus = false
       e.preventDefault()
     },
 
+    /**
+     * 向上选择
+     */
     upSelectHandler (e) {
       var me = this
       me.$els.tagInput.value = this.newTag
@@ -115,6 +128,9 @@ export default {
       return false
     },
 
+    /**
+     * 向下选择
+     */
     downSelectHandler (e) {
       var me = this
       me.$els.tagInput.value = this.newTag
@@ -125,6 +141,9 @@ export default {
       return false
     },
 
+    /**
+     * 回车，先中一个，或者生成一个新的
+     */
     submitHandler () {
       var _tagName = ''
       if (this.searchResult.length > 0 && this.selectIndex >= 0) {
@@ -196,34 +215,8 @@ export default {
       }, (_matched) => {
         console.log(_matched)
         this.searchResult = _matched
-        this.selectIndex = -1
+        this.selectIndex = 0
       })
-
-      // if (searchAjax) {
-      //   searchAjax.abort()
-      // }
-      // var searchAjax = $.ajax({
-      //   type: 'GET',
-      //   dataType: 'json',
-      //   url: globalConf.contextPath + '/api/v1/tags/like.json?name=' + encodeURI(tagName),
-      //   xhrFields: {
-      //     withCredentials: true
-      //   },
-      //   crossDomain: true,
-      //   contentType: 'application/x-www-form-urlencoded charset=utf-8',
-      //   erro () {
-      //     clearTimeout(timer)
-      //     me.loadHide()
-      //   },
-      //   success (resp) {
-      //     clearTimeout(timer)
-      //     me.loadHide()
-      //     if (resp && resp.tags) {
-      //       me.searchResult = me.filterBinded(resp.tags)
-      //       me.selectIndex = 0
-      //     }
-      //   }
-      // })
     },
     filterBinded (arr) {
       var result = []
@@ -240,6 +233,10 @@ export default {
       }
       return result
     },
+
+    /**
+     * 绑定tag
+     */
     bindTag (tagName) {
       var me = this
       for (var i = 0; i < this.tags.length; i++) {
@@ -273,10 +270,14 @@ export default {
       //   }
       // })
     },
+
+    /**
+     * un绑定tag
+     */
     unBindTag (e) {
       // var me = this
       var tagId = $(e.target).attr('tag-id')
-      console.info(this.subjectId + '\t' + tagId)
+      console.info(this.subjectId + '\t==' + tagId)
       api.unBindTagById(this.subjectId, tagId, () => {
 
       }, () => {
@@ -285,20 +286,11 @@ export default {
         })
         this.tags = _tags
       })
-      // $.ajax({
-      //   type: 'POST',
-      //   dataType: 'json',
-      //   url: globalConf.contextPath + '/api/v1/' + subjectId + '/tags/' + tagId + '.json?_method=delete',
-      //   xhrFields: {
-      //     withCredentials: true
-      //   },
-      //   crossDomain: true,
-      //   contentType: 'application/x-www-form-urlencoded charset=utf-8',
-      //   success (resp) {
-      //     me.remove(tagId)
-      //   }
-      // })
     },
+
+    /**
+     * 从数组中清除tag
+     */
     remove (tagId) {
       var me = this
       for (var i = 0; i < me.tags.length; i++) {
