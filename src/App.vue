@@ -24,7 +24,7 @@
           </span>
         </li>
       </ul>
-      <div class='tag-autocomplete'>
+      <div class='tag-autocomplete' v-bind:style="{ width: width + 'px' }">
         <div v-if='newTag.length==0' class='tag-autocomplete-placeholder'>
           输入分类标签名称(回车提交)
         </div>
@@ -59,6 +59,10 @@ export default {
     subjectId: {
       type: String,
       default: ''
+    },
+    width: {
+      type: Number,
+      default: 500
     }
   },
   data () {
@@ -67,7 +71,7 @@ export default {
       loading: false,
       locked: false,
       newTag: '',
-      selectIndex: 0,
+      selectIndex: -1,
       tags: [],
       searchResult: []
     }
@@ -113,7 +117,7 @@ export default {
      * 失去焦点
      */
     blurHander (e) {
-      this.focus = false
+      // this.focus = false
       e.preventDefault()
     },
 
@@ -215,7 +219,7 @@ export default {
       }, (_matched) => {
         console.log(_matched)
         this.searchResult = _matched
-        this.selectIndex = 0
+        this.selectIndex = -1
       })
     },
     filterBinded (arr) {
@@ -307,8 +311,10 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .tag-box {
+  // position: absolute;
+  width: 100%;
 	&.loaded{
 		.spinner{
 			display: none;
@@ -388,18 +394,16 @@ export default {
 			}
 		}
 		.tag-autocomplete {
-			/*position: absolute;*/
+			position: absolute;
 			z-index: 288;
-			/*width: 659px;*/
-			/*margin-left: -1px;*/
+			margin-left: -1px;
 
 			.tag-autocomplete-placeholder {
-				border: 1px solid #999;
 				border-top: none;
 				display: none;
-				background: #eee;
-				filter: alpha(opacity=90);
-				opacity: .9;
+				background: #F9F9F9;
+				filter: alpha(opacity=98);
+				opacity: .98;
 				webkit-box-shadow: 0 3px 3px #ccc;
 				moz-box-shadow: 0 3px 3px #ccc;
 				box-shadow: 0 3px 3px #ccc;
@@ -407,20 +411,20 @@ export default {
 			}
 		}
 		.tag-autocomplete-results {
-			border: #bbbbbb 1px solid;
-			border-top: #bbbbbb 1px;
+      border-top: none;
 			display: none;
-			background: #F9F9F9;
-			filter: alpha(opacity=90);
-			opacity: .9;
-			webkit-box-shadow: 0 3px 3px #E8E8E8;
-			moz-box-shadow: 0 3px 3px #E8E8E8;
-			box-shadow: 0 3px 3px #E8E8E8;
+      background: #F9F9F9;
+      filter: alpha(opacity=98);
+      opacity: .98;
+      webkit-box-shadow: 0 3px 3px #ccc;
+      moz-box-shadow: 0 3px 3px #ccc;
+      box-shadow: 0 3px 3px #ccc;
 
 			.autocomplete-result-tip {
-				padding: 10px;
-				color: #999;
-				background: #eee;
+				padding: 5px 7px;
+        background: #F9F9F9;
+        filter: alpha(opacity=98);
+        opacity: .98;
 				list-style-type: none;
 				cursor: default;
 			}
@@ -436,8 +440,9 @@ export default {
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				display: block;
+        cursor: pointer;
 
-				&.active {
+				&.active,&:hover {
 					background: rgba(0, 125, 219, 0.1);
 				}
 			}
@@ -451,7 +456,7 @@ export default {
 		}
 	}
 	.focus {
-		border: 1px solid rgba(187, 187, 187, 1);
+		border: 1px solid #ddd;
 
 		.tag-input {
 			display: inline-block !important;
@@ -459,6 +464,10 @@ export default {
 		.tag-editable-addtag {
 			display: none !important;
 		}
+    .tag-autocomplete{
+      border: 1px solid #ddd;
+      border-top: none;
+    }
 		.tag-autocomplete-placeholder{
 			display: block !important;
 		}
