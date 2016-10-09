@@ -15,10 +15,17 @@ module.exports = {
       succ(_matched)
     }, 100)
   },
-  bindTagByName (subjectId, tagName) {
-
+  bindTagByName (subjectId, tagName, erro, succ) {
+    console.log(subjectId + '|' + tagName)
+    var id = Math.round(Math.random() * 1000)
+    var tag = {
+      uuid: id,
+      name: tagName,
+      sid: subjectId
+    }
+    succ(tag)
   },
-  unBindTagById (subjectId, tagId, erro, succ) {
-
+  unBindTagById (subjectId, tagName, erro, succ) {
+    succ()
   }
 }
