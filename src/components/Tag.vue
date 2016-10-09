@@ -1,5 +1,5 @@
 <template>
-  <div class='tag-box fadeIn ani600 {{loading?'':'loaded'}}' v-bind:style="{ width: width + 'px' }">
+  <div class='tag-box fadeIn ani600' v-bind:style="{ width: width + 'px' }">
     <div :class='wrapClass'>
       <ul class='tags' id='tag-list'>
         <li class='item' v-for='tag in tags'>
