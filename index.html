@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-  <!-- 新 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
-  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-
-
-
-
-    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/me.css" />
+    <link rel="stylesheet" type="text/css" href="/static/js/aui/css/aui.css" /><head>
+    <link rel="stylesheet" type="text/css" href="/static/js/aui/css/aui-experimental.css" /><head>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
     <meta charset="utf-8">
     <title>widget-user-filter</title>
-
-    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <style type="text/css">
       body{
         padding: 20px;
+        background: white;
       }
     </style>
   </head>
   <body>
-    <div>这是上一段内容区</div>
-    <div>
-      <tag></tag>
-    </div>
-    <div>这是下一段内容区</div>
+
+
+    <div id="app"></div>
+    
+
+
+
+    <script src="/static/js/jquery-2.1.1.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+<!--     <script type="text/javascript">
+        var $jq = jQuery.noConflict(true);
+    </script> -->
+    <script src="/static/js/aui/js/aui.js"></script>
+    <script src="/static/js/aui/js/aui-experimental.js"></script>
+    <script src="/static/js/aui/js/aui-datepicker.js"></script>
+
+
+
+        <!-- script src="//aui-cdn.atlassian.com/aui-adg/6.0.0/js/aui.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/6.0.0/js/aui-experimental.js"></script>
+        <script src="//aui-cdn.atlassian.com/aui-adg/6.0.0/js/aui-datepicker.js"></script>
+ -->
+
+
+
+    <script type="text/javascript">
+        // AJS.toInit = function (func) {
+        //     $(function () {
+        //         try {
+        //             func.apply(this, arguments);
+        //         } catch(ex) {
+        //             // just calling AJS.log with an Error object gives "[object Error]" in IE,
+        //             // We want better, thus more plumbing for better Error object logging
+        //             AJS.logError("Failed to run init function: ", ex);
+        //             AJS.log("Failed toInit function is: " + func);
+        //         }
+        //     });
+        //     return this;
+        // };
+    </script>
   </body>
-
-  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </html>

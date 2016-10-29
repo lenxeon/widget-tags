@@ -7,6 +7,9 @@ module.exports = {
   entry: {
     app: './src/dev.js'
   },
+  externals: {
+    '@atlassian/aui': 'AJS'
+  },
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,

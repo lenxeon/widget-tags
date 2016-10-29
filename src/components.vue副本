@@ -1,0 +1,111 @@
+<template>
+  <div>
+    <select v-model="widget" :on-change="changeHandler">
+      <option value="tag">Tag</option>
+      <option value="user-filter">UserFilter</option>
+      <option value="keyword-filter">KeywordFilter</option>
+      <option value="module-filter">ModuleFilter</option>
+      <option value="project-filter">ProjectFilter</option>
+      <option value="task-status-filter">TaskStatusFilter</option>
+      <option value="create-date-filter">CreateDateFilter</option>
+      <option value="date-picker">DatePicker</option>
+      <option value="module">module</option>
+    </select>
+  </div>
+  <div class="showArea">
+    <tag v-if="widget=='tag'" transition="fade" transition-mode="out-in"></tag>
+    <user-filter v-if="widget=='user-filter'" transition="fade" transition-mode="out-in"></user-filter>
+    <keyword-filter v-if="widget=='keyword-filter'" transition="fade" transition-mode="out-in"></keyword-filter>
+    <module-filter v-if="widget=='module-filter'" transition="fade" transition-mode="out-in"></module-filter>
+    <project-filter v-if="widget=='project-filter'" transition="fade" transition-mode="out-in"></project-filter>
+    <task-status-filter v-if="widget=='task-status-filter'" transition="fade" transition-mode="out-in"></task-status-filter>
+    <create-date-filter v-if="widget=='create-date-filter'" transition="fade" transition-mode="out-in"></create-date-filter>
+    <date-picker v-if="widget=='date-picker'" transition="fade" transition-mode="out-in"></date-picker>
+    <module v-if="widget=='module'" transition="fade" transition-mode="out-in"></module>
+  </div>
+</template>
+
+<script>
+import Tag from './components/tag/Tag.vue'
+import UserFilter from './components/user-filter/UserFilter.vue'
+import KeywordFilter from './components/keyword-filter/KeywordFilter.vue'
+import ModuleFilter from './components/module-filter/ModuleFilter.vue'
+import ProjectFilter from './components/project-filter/ProjectFilter.vue'
+import TaskStatusFilter from './components/task-status-filter/TaskStatusFilter.vue'
+import CreateDateFilter from './components/create-date-filter/CreateDateFilter.vue'
+import DatePicker from './components/date-picker/DatePicker.vue'
+import Module from './components/module/Module.vue'
+
+// Vue.component('tag', Tag)
+// Vue.component('userFilter', UserFilter)
+// Vue.component('keywordFilter', KeywordFilter)
+// Vue.component('moduleFilter', ModuleFilter)
+// Vue.component('projectFilter', ProjectFilter)
+// Vue.component('task-status-filter', TaskStatusFilter)
+// Vue.component('create-date-filter', CreateDateFilter)
+// Vue.component('date-picker', DatePicker)
+
+// Vue.component('dashboard', Dashboard)
+export default {
+  props: {
+    widget: {
+      type: String,
+      default: 'create-date-filter'
+    }
+  },
+  components: {
+    Tag,
+    UserFilter,
+    KeywordFilter,
+    ModuleFilter,
+    ProjectFilter,
+    TaskStatusFilter,
+    CreateDateFilter,
+    DatePicker,
+    Module
+    // Dashboard
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    wrapClass () {
+      return {
+        'dropdown': true
+        // 'open': this.open
+      }
+    },
+    autocompleteClass () {
+      return {
+        'tag-autocomplete': true,
+        'empty': this.searchResult.length === 0 && !this.focus
+      }
+    }
+  },
+
+  filter: {
+    urlBuilder: function (tagId) {
+      return 'http://www.baidu.com/' + tagId
+    }
+  },
+
+  methods: {
+    changeHandler: function () {
+      console.log(this)
+    }
+  },
+  ready () {
+  },
+  beforeDestroy () {
+  }
+}
+</script>
+
+<style lang="less">
+.showArea{
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px dashed #ddd;
+}
+</style>

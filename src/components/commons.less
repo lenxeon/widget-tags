@@ -1,0 +1,75 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  min-height: 100% !important;
+}
+
+/******/
+
+.lft {
+  float: left !important;
+}
+
+.rgt {
+  float: right !important;
+}
+
+.clear {
+  clear: both;
+
+  &:after, &:before {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.y-scroll{
+  overflow-y: scroll !important; 
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.ellipsis {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+*{
+  outline:none !important;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none !important;;
+}
+
+.generate-margin(ml, margin-left, 5);
+.generate-margin(mr, margin-right, 5);
+.generate-margin(mt, margin-top, 5);
+.generate-margin(mb, margin-bottom, 5);
+.generate-margin(m, margin, 5);
+
+.generate-margin(@name, @dir, @n, @i:1) when (@i =< 5) {
+  .@{name}-@{n}, .@{name}@{n}{
+    @{dir}:(@n)*1px;
+  }
+  .generate-margin(@name, @dir, @n+5, (@i + 1));
+}
+
+.generate-padding(pl, padding-left, 5);
+.generate-padding(pr, padding-right, 5);
+.generate-padding(pt, padding-top, 5);
+.generate-padding(pb, padding-bottom, 5);
+.generate-padding(p, padding, 5);
+
+.generate-padding(@name, @dir, @n, @i:1) when (@i =< 5) {
+  .@{name}-@{n}, .@{name}@{n}{
+    @{dir}:(@n)*1px;
+  }
+  .generate-padding(@name, @dir, @n+5, (@i + 1));
+}
