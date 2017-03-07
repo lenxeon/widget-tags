@@ -7,7 +7,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify'); 
 var concat = require('gulp-concat');
 var shrink = require('gulp-cssshrink');
 var greplace = require('gulp-replace');

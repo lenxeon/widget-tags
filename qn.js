@@ -12,7 +12,7 @@ var log = require('gulp-util').log;
 var qn = require('qn');
 var merge = require('merge');
 var path = require('path');
-var async = require('async');
+var async = require('async'); 
 
 
 module.exports = function(options) {
