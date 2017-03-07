@@ -21,8 +21,12 @@
   </div>
 </template>
 <script>
+  let api = process.env.API + ''
   export default {
-    name: 'App'
+    name: 'App',
+    created () {
+      console.log(api)
+    }
   }
 </script>
 
