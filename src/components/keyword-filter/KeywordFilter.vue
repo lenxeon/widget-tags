@@ -9,7 +9,6 @@
 </template>
 
 <script>
-require('../commons.less')
 export default {
 
 }

@@ -8,12 +8,15 @@ module.exports = {
     app: './src/dev.js'
   },
   externals: {
-    '@atlassian/aui': 'AJS'
+    AJS: 'window.AJS',
+    quill: 'window.Quill',
+    tinymce: 'window.tinymce'
   },
   output: {
     path: config.build.assetsRoot,
-    publicPath: config.build.assetsPublicPath,
-    filename: '[name].js'
+    // publicPath: config.build.assetsPublicPath,
+    // path: __dirname,
+    filename: '[name]/build.js'
   },
   resolve: {
     extensions: ['', '.js', '.vue'],

@@ -56,7 +56,6 @@
 </template>
 
 <script>
-require('../commons.less')
 const _ = require('underscore')
 const api = require('assets/userFilterApi')
 const {EventListener} = require('assets/EventListener')
@@ -437,126 +436,126 @@ export default {
 </script>
 
 <style lang="less">
-// body {
-//   .empty{
-//     text-align: center;
-//   }
+body {
+  .empty {
+    text-align: center;
+  }
+  ul {
+    margin-bottom: 0px;
 
-//   ul {
-//       margin-bottom: 0px;
+    li {
+      dl {
+        line-height: 24px;
+        height: 24px;
+        padding: 0px;
+        margin: 0px;
 
-//       li {
-//           dl {
-//               line-height: 24px;
-//               height: 24px;
-//               padding: 0px;
-//               margin: 0px;
+        &>dt {
+          color: #707070;
+          display: table-cell;
+          font-weight: normal;
+          text-align: left;
+          vertical-align: top;
+          width: 100px;
+          padding: 2px 0 2px 5px;
+          margin: 0px;
+        }
+        &>dd {
+          display: table-cell;
+          -moz-box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          padding: 2px 0 2px 5px;
+          margin: 0px;
+        }
+      }
+    }
+  }
+  .check-list-field-container {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
 
-//               &>dt {
-//                   color: #707070;
-//                   display: table-cell;
-//                   font-weight: normal;
-//                   text-align: left;
-//                   vertical-align: top;
-//                   width: 100px;
-//                   padding: 2px 0 2px 5px;
-//                   margin: 0px;
-//               }
-//               &>dd {
-//                   display: table-cell;
-//                   -moz-box-sizing: border-box;
-//                   -webkit-box-sizing: border-box;
-//                   box-sizing: border-box;
-//                   padding: 2px 0 2px 5px;
-//                   margin: 0px;
-//               }
-//           }
-//       }
-//   }
-//   .check-list-field-container {
-//     -moz-box-sizing: border-box;
-//     -webkit-box-sizing: border-box;
-//     -ms-box-sizing: border-box;
-//     box-sizing: border-box;
-//     overflow: hidden;
+    .result-view {
+      max-height: 300px;
+      overflow: auto;
+    }
+    li {
+      display: block;
+      padding: 3px 20px;
+      clear: both;
+      font-weight: 400;
+      line-height: 1.42857143;
+      color: #333;
+      white-space: nowrap;
+      cursor: pointer;
 
-//     .result-view{
-//         max-height: 300px;
-//         overflow: auto;
-//     }
+      &.divider {
+        padding: 0px;
+      }
+      -webkit-user-select: none;
 
-//     li {
-//         display: block;
-//         padding: 3px 20px;
-//         clear: both;
-//         font-weight: 400;
-//         line-height: 1.42857143;
-//         color: #333;
-//         white-space: nowrap;
-//         cursor: pointer;
-//         &.divider{
-//             padding: 0px;
-//         }
-//         -webkit-user-select:none;
-//         &.item {
-//             &.single{
-//               padding: 3px 10px;
-//             }
-//             .fa{
-//               width: 10px;
-//             }
-//             &:hover, &.hover, &.selected {
-//                 background: #f5f5f5;
-//             }
-//             &.divider {
-//                 padding: 0px;
-//             }
-//         }
-//     }
-//     .search {
-//         -moz-box-sizing: border-box;
-//         -webkit-box-sizing: border-box;
-//         -ms-box-sizing: border-box;
-//         box-sizing: border-box;
-//         -moz-border-radius: 3px 3px 3px 3px;
-//         border-radius: 3px 3px 3px 3px;
-//         position: relative;
-//         z-index: 1;
-//         width: 100%;
-//         min-height: 28px;
-//         height: 0;
-//         border: 1px solid #ccc;
-//         padding: 0 24px 0 6px;
-//         -webkit-box-shadow: #bbb 0 7px 2px -7px inset;
-//         -moz-box-shadow: #bbb 0 7px 2px -7px inset;
-//         box-shadow: #bbb 0 7px 2px -7px inset;
-//         margin: 0;
-//         font-size: 14px;
-//         font-family: inherit;
-//     }
-//     .icon {
-//         display: inline-block;
-//         height: 16px;
-//         margin: 0;
-//         overflow: hidden;
-//         padding: 0;
-//         text-align: left;
-//         text-indent: -999em;
-//         vertical-align: text-top;
-//         width: 16px;
-//     }
-//     .icon {
-//         position: absolute;
-//         top: 7px;
-//         right: 5px;
-//         z-index: 2;
-//         background: url('/assets/search.png');
-//     }
-//     .icon.clear-field {
-//         background: url('/assets/clear.png');
-//         cursor: pointer;
-//         opacity: 0.7;
-//     }
-//   }
-// }
+      &.item {
+        &.single {
+          padding: 3px 10px;
+        }
+        .fa {
+          width: 10px;
+        }
+        &:hover, &.hover, &.selected {
+          background: #f5f5f5;
+        }
+        &.divider {
+          padding: 0px;
+        }
+      }
+    }
+    .search {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      -moz-border-radius: 3px 3px 3px 3px;
+      border-radius: 3px 3px 3px 3px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 28px;
+      height: 0;
+      border: 1px solid #ccc;
+      padding: 0 24px 0 6px;
+      -webkit-box-shadow: #bbb 0 7px 2px -7px inset;
+      -moz-box-shadow: #bbb 0 7px 2px -7px inset;
+      box-shadow: #bbb 0 7px 2px -7px inset;
+      margin: 0;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .icon {
+      display: inline-block;
+      height: 16px;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      text-align: left;
+      text-indent: -999em;
+      vertical-align: text-top;
+      width: 16px;
+    }
+    .icon {
+      position: absolute;
+      top: 7px;
+      right: 5px;
+      z-index: 2;
+      background: url('/assets/search.png');
+    }
+    .icon.clear-field {
+      background: url('/assets/clear.png');
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+}
 </style>

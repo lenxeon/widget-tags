@@ -1,21 +1,23 @@
 <template>
-    <input v-el:picker :uuid="uuid" readonly="true" class="aui-date-picker" languageCode="zh-CN" type="date"/>
+    <input v-el:picker :uuid="uuid" 
+    readonly="true" 
+    class="aui-date-picker" 
+    languageCode="zh-CN" 
+    type="date"
+    value="{{dt}}" 
+    />
 </template>
 
 <script>
-require('../commons.less')
-// const _ = require('underscore')
-// const $ = require('jquery')
-// const api = require('../../assets/tagApi')
+const AJS = require('AJS')
 const {EventListener} = require('assets/EventListener')
-const AJS = require('@atlassian/aui')
 export default {
   props: {
     uuid: {
       type: String,
       default: ''
     },
-    subjectId: {
+    dt: {
       type: String,
       default: ''
     },

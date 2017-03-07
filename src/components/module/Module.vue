@@ -13,7 +13,6 @@
 </template>
 
 <script>
-require('../commons.less')
 export default {
   props: {
     expanded: {
@@ -28,6 +27,8 @@ export default {
     //   type: Number,
     //   default: 500
     // }
+  },
+  components: {
   },
   data () {
     return {

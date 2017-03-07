@@ -5,11 +5,11 @@ var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 // var ExtractTextPlugin = require('extract-text-webpack-plugin')
-// var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
-
+console.log(config)
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
     app: './src/index.js'
@@ -20,8 +20,9 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js'),
+    publicPath: '/',
+    filename: utils.assetsPublicPath('/[name]/[name].[hash].js'),
+    chunkFilename: utils.assetsPublicPath('/[name]/[id].[chunkhash].js'),
     library: 'Tag',
     libraryTarget: 'umd'
   },
@@ -83,6 +84,37 @@ var webpackConfig = merge(baseWebpackConfig, {
     //   name: 'manifest',
     //   chunks: ['vendor']
     // })
+
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      minify: {
+        removeComments: true,
+        // collapseWhitespace: true,
+        // removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      chunksSortMode: 'dependency'
+    }),
+    // split vendor js into its own file
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   minChunks: function (module, count) {
+    //     // any required modules inside node_modules are extracted to vendor
+    //     return (
+    //       module.resource &&
+    //       /\.js$/.test(module.resource) &&
+    //       module.resource.indexOf(
+    //         path.join(__dirname, '../node_modules')
+    //       ) === 0
+    //     )
+    //   }
+    // })
+
+
   ]
 })
 

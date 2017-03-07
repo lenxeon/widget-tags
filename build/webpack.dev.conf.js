@@ -11,6 +11,9 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 })
 
 module.exports = merge(baseWebpackConfig, {
+  entry: {
+    app: './src/dev.js'
+  },
   module: {
     loaders: utils.styleLoaders()
   },
@@ -25,10 +28,10 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    })
+    // new HtmlWebpackPlugin({
+    //   filename: 'index-dist.html',
+    //   template: path.resolve(__dirname, './index.html'),
+    //   inject: true
+    // })
   ]
 })

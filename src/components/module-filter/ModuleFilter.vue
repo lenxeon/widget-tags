@@ -11,7 +11,6 @@
 </template>
 
 <script>
-require('../commons.less')
 // const _ = require('underscore')
 const $ = require('jquery')
 // const api = require('../../assets/tagApi')

@@ -86,7 +86,7 @@
                     <i class="fa fa-clock-o"></i>
                   </span>
                 </span>
-                2016-02-19 18:00
+                <date-picker dt="2016-02-29"></date-picker>
               </span>
               <i class="fa fa-pencil"></i>
             </span>
@@ -111,7 +111,7 @@
                     <i class="fa fa-clock-o"></i>
                   </span>
                 </span>
-                2016-02-19 18:00
+                <date-picker dt="2016-02-29"></date-picker>
               </span>
               <i class="fa fa-pencil"></i>
             </span>
@@ -140,11 +140,63 @@
       </li>
     </ul>
   </module>
+
+  <!--用户 end--><!--用户 start-->
+  <module title="日期" class="clear">
+    <ul class="property-list two-cols clear">
+      <li class="item full-width tag-item">
+        <div class="wrap" id="wrap-labels">
+          <strong class="name">
+            创建日期:
+          </strong>
+          <div class="value" title="Click to edit">
+            <i class="fa fa-clock-o"></i>
+            <date-picker dt="2016-02-29"></date-picker>
+            <i class="fa fa-pencil"></i>
+          </div>
+        </div>
+      </li>
+      <li class="item full-width tag-item">
+        <div class="wrap" id="wrap-labels">
+          <strong class="name">
+            更新日期:
+          </strong>
+          <div class="value" title="Click to edit">
+            <i class="fa fa-clock-o"></i>
+            <date-picker dt="2016-02-29"></date-picker>
+            <i class="fa fa-pencil"></i>
+          </div>
+        </div>
+      </li>
+      <li class="item full-width tag-item">
+        <div class="wrap" id="wrap-labels">
+          <strong class="name">
+            计划完成时间:
+          </strong>
+          <div class="value" title="Click to edit">
+            <i class="fa fa-clock-o"></i>
+            <date-picker dt="2016-02-29"></date-picker>
+            <i class="fa fa-pencil"></i>
+            <a href="/secure/ManageWatchers!default.jspa?id=11506"
+            title="查看关注人">
+              <span class="aui-badge watch-state-off">
+                2
+              </span>
+            </a>
+            <a class="watch-state-off" href="/secure/VoteOrWatchIssue.jspa?atl_token=B5LF-Q5T5-CRZH-0CCX|ac9dbd15d5c1cc2169d3f0f07ab8d72c4ff8ce39|lin&amp;id=11506&amp;watch=watch"
+            rel="11506">
+              关注这个问题
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </module>
   <!--用户 end-->
 
 
   <!--问题详情-->
-  <module title="日期" class="clear">
+  <module title="问题详情" class="clear">
     <ul class="property-list two-cols clear">
       <li class="item">
         <div class="wrap">
@@ -214,8 +266,9 @@
 </template>
 
 <script>
-import Tag from '../../components/tag/Tag.vue'
+import Tag from '../../components/tag/Index.vue'
 import Module from '../../components/module/Module.vue'
+import {DatePicker} from '../../index.js'
 export default {
   props: {
     expanded: {
@@ -234,7 +287,8 @@ export default {
   },
   components: {
     Tag,
-    Module
+    Module,
+    DatePicker
   },
   data () {
     return {

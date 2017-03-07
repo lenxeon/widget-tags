@@ -18,11 +18,12 @@ var spinner = ora('building for production...')
 spinner.start()
 
 var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
-rm('-rf', assetsPath)
+console.log('====>' + assetsPath) //对应到根目录下的dist/static
+rm('-rf', config.build.assetsRoot)
 mkdir('-p', assetsPath)
 cp('-R', 'static/', assetsPath)
 
-webpack(webpackConfig, function (err, stats) {
+webpack(webpackConfig, function(err, stats) {
   spinner.stop()
   if (err) throw err
   process.stdout.write(stats.toString({
