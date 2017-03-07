@@ -36,18 +36,6 @@ gulp.task('index', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', function() {
-  gulp.src('./js')
-    .pipe(webpack(config))
-    .pipe(gulp.dest('./build'));
-});
-
-gulp.task('css', function() {
-  gulp.src(['./css/main.css', './css/view.css'])
-    .pipe(concat('app.css'))
-    .pipe(gulp.dest('./build'));
-});
-
 gulp.task('publish-js', function() {
   return gulp.src(['dist/**'])
     // .pipe(webpack(config))
@@ -61,6 +49,18 @@ gulp.task('publish-js', function() {
     }))
     // .pipe(rev.manifest())
     // .pipe(gulp.dest('./dist2/rev/js'));
+});
+
+gulp.task('js', function() {
+  gulp.src('./js')
+    .pipe(webpack(config))
+    .pipe(gulp.dest('./build'));
+});
+
+gulp.task('css', function() {
+  gulp.src(['./css/main.css', './css/view.css'])
+    .pipe(concat('app.css'))
+    .pipe(gulp.dest('./build'));
 });
 
 gulp.task('publish-css', function() {
